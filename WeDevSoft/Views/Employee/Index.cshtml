@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WeDevSoft.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Employee Register</h4>
+
+<p>
+    
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficeLoction)
+            </th>
+            <th>
+                <a class="btn btn-success" asp-action="AddOrEdit"><i class="glyphicon-plus"></i> Create New</a>                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeLoction)
+            </td>
+            <td>
+                <a asp-action="AddOrEdit" asp-route-id="@item.EmployeeId"><i class="glyphicon glyphicon-pencil text-success"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.EmployeeId"><i class="glyphicon glyphicon-trash text-danger" onclick="return confirm('are you sure delete.?')"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
